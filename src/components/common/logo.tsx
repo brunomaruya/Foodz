@@ -1,10 +1,16 @@
 import { Hamburger } from 'phosphor-react';
 import React from 'react';
 
-export default function Logo() {
+interface LoginProps {
+  width: string;
+}
+
+export default function Logo({ width }: LoginProps) {
   return (
     <div>
-      <Hamburger className="bg-primary text-white  rounded-lg w-20 h-20 p-2" />
+      <Hamburger
+        className={`bg-primary text-white  rounded-lg w-[${width}] h-[${width}] p-2`}
+      />
     </div>
   );
 }
