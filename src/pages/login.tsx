@@ -1,5 +1,10 @@
+import { LoginHeader } from '@/components/login';
 import React from 'react';
 
 export default function Login() {
-  return <div>login</div>;
+  return (
+    <main>
+      <LoginHeader />
+    </main>
+  );
 }
