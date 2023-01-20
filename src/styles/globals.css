@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-primary {
+  @apply bg-gradient-to-br from-red-200 to-primary-color;
+}
