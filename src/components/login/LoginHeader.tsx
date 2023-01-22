@@ -4,7 +4,7 @@ import Logo from '../common/logo';
 export default function LoginHeader() {
   return (
     <header>
-      <div className="flex flex-col items-center gap-3 pt-20 mb-8">
+      <div className="flex flex-col items-center gap-3 pt-16 mb-8">
         <Logo width={'h-16'} height={'w-16'} />
         <span className="text-primary-color font-bold">Foodz</span>
       </div>

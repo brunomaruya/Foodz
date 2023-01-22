@@ -1,16 +1,16 @@
 import { Checkbox } from '@mui/material';
-import {
-  Eye,
-  FacebookLogo,
-  FaceMask,
-  GoogleChromeLogo,
-  GoogleLogo,
-} from 'phosphor-react';
-import React from 'react';
+import { Eye, EyeSlash, FacebookLogo, GoogleLogo } from 'phosphor-react';
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 
 export default function Form() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handlePasswordVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <div className="px-5 mt-6 flex flex-col items-center gap-3">
       <form className="flex flex-col gap-3 w-full">
@@ -30,8 +30,18 @@ export default function Form() {
             Password<span className="text-primary-color">*</span>
           </label>
           <div className="border py-1 px-5 rounded-3xl text-sm flex items-center justify-between">
-            <input type="password" placeholder="Password" />
-            <Eye className="text-lg" />
+            <input
+              type={isVisible ? 'text' : 'password'}
+              placeholder="Password"
+            />
+            {isVisible ? (
+              <EyeSlash
+                onClick={handlePasswordVisibility}
+                className="text-lg"
+              />
+            ) : (
+              <Eye onClick={handlePasswordVisibility} className="text-lg" />
+            )}
           </div>
         </div>
 
@@ -49,16 +59,16 @@ export default function Form() {
           <label htmlFor="checkbox">Remeber me</label>
         </div>
         <input
-          className="bg-primary-color text-white py-2 rounded-3xl"
+          className="bg-primary text-white py-2 rounded-3xl"
           type="submit"
-          value="Sign in"
+          value="Sign up"
         />
       </form>
       <Link href="#" className="text-primary-color font-semibold text-sm">
         Forgot the password?
       </Link>
       <div className="flex flex-col items-center">
-        <span className="text-sm">or continue with</span>
+        <span className="text-sm mb-2">or continue with</span>
         <div className="flex gap-5 ">
           <button className="flex items-end gap-1 border py-3 px-8 rounded-xl">
             <FacebookLogo className="text-2xl text-blue-900 " />
@@ -69,6 +79,12 @@ export default function Form() {
             <span className="text-sm font-semibold">Google</span>
           </button>
         </div>
+      </div>
+      <div className="text-zinc-400 mt-2">
+        Already have an account?{' '}
+        <Link href="#" className="text-primary-color">
+          Sign in
+        </Link>
       </div>
     </div>
   );
